@@ -17,3 +17,5 @@ Our team decided to model a database that administrates, schedules, handles oper
 
 
 **DATA MODEL**
+
+<img width="623" alt="Image" src="https://github.com/user-attachments/assets/eb45cfc1-445b-414b-9123-13960efe1c76" />
