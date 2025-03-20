@@ -51,21 +51,13 @@ WHERE t.teamName = 'Alabama Crimson Tide';
 - This SQL query retrieves all games played by the Alabama Crimson Tide, displaying the game ID, game date, and team name. This query also joins several tables which are Game, GameTeam, and Team. It allows for analysts and reporters to see past and upcoming games for the specific team and allows for fans to look up a specific team and the game date since many fans look to only support a specific team.
 
 **Query 3**
-- SELECT t.teamName,
-    MAX(st.recevingYards) AS maxReceivingYards,
-    MAX(st.passingYards) AS maxPassingYards,
-    MAX(st.rushingYards) AS maxRushingYards
-FROM Team t
-JOIN Player p ON t.teamID = p.Team_teamID
-JOIN Statistics st ON p.playerID = st.Player_playerID
-JOIN Game g ON st.Game_gameID = g.gameID
-JOIN Stadium s ON g.Stadium_stadiumID = s.stadiumID
-WHERE p.positionPlayer = 'Quarterback' 
-GROUP BY t.teamName
-ORDER BY MAX(st.passingYards), MAX(st.recevingYards) , MAX(st.rushingYards);
-<img width="706" alt="Image" src="https://github.com/user-attachments/assets/fcd0a3a4-e98e-42fe-bc13-11e176fdc41a" />
+- SELECT Coach.firstNameCoach, Coach.lastNameCoach, Team.teamName
+FROM Coach
+JOIN Team ON Coach.Team_teamID = Team.teamID;
+<img width="638" alt="Image" src="https://github.com/user-attachments/assets/fe3e36e1-a82a-4965-bcdd-304005318ffb" />
 
-- This query retrieves the maximum receiving, passing, and rushing yards that were achieved in each team. By viewing a very specific position which in this case was Quarterback, it allows managers, coaches, and analysts to see results from each team with the highest values of this particular position.  This is crucial for analyzing this particular role and where they are performing the highest. It also allows for comparison across the different teams to determine teams with highest performance.
+- This query retrieves coaches and their prospective team through joining Coach and Team by the Team_teamID foreign key. This query provides coaches a reference of their team. This also allows for team management and sports analysis for sports analysts who want to associate the coach to their team for reports.
+
 
 
 **Query 4** 
@@ -100,15 +92,21 @@ ORDER BY ST.passingYards DESC;
 - Lines of players’ first and last names are returned with this query as well as the season and their passing yards, which is sorted from highest passing yards to lowest.  This query also specifically grabs players with more than 4700 passing yards. This is a multi join through three different tables which are Statistics, Player and Season. By specifically seeing those who have a high number of passing yards, coaches can identify top-performing players. This is also crucial for player recognition, strategy planning, and potential scouting. 
 
 **Query 7**
-- SELECT G.gameDate, S.stadiumName, MAX(T.price) AS highestTicketPrice
-FROM Ticket T
-JOIN Game G ON T.Game_gameID = G.gameID
-JOIN Stadium S ON G.Stadium_stadiumID = S.stadiumID
-GROUP BY G.gameDate, S.stadiumName
-ORDER BY highestTicketPrice DESC;
-<img width="618" alt="Image" src="https://github.com/user-attachments/assets/20374aab-38e9-4c0f-b6c3-adc73287d0de" />
+- SELECT t.teamName,
+    MAX(st.recevingYards) AS maxReceivingYards,
+    MAX(st.passingYards) AS maxPassingYards,
+    MAX(st.rushingYards) AS maxRushingYards
+FROM Team t
+JOIN Player p ON t.teamID = p.Team_teamID
+JOIN Statistics st ON p.playerID = st.Player_playerID
+JOIN Game g ON st.Game_gameID = g.gameID
+JOIN Stadium s ON g.Stadium_stadiumID = s.stadiumID
+WHERE p.positionPlayer = 'Quarterback' 
+GROUP BY t.teamName
+ORDER BY MAX(st.passingYards), MAX(st.recevingYards) , MAX(st.rushingYards);
+<img width="706" alt="Image" src="https://github.com/user-attachments/assets/fcd0a3a4-e98e-42fe-bc13-11e176fdc41a" />
 
-- This query retrieves the most expensive ticket price of each game along with the date of the game and the stadium at which the game occurred. It sorts the ticket pricing from the highest to lowest using the descending order. This is beneficial for financial and revenue analysis and being able to see what specific game date and stadium brought the highest selling tickets. It allows managers to view what locations drive the most popularity to assist in future pricing strategies.
+- This query retrieves the maximum receiving, passing, and rushing yards that were achieved in each team. By viewing a very specific position which in this case was Quarterback, it allows managers, coaches, and analysts to see results from each team with the highest values of this particular position.  This is crucial for analyzing this particular role and where they are performing the highest. It also allows for comparison across the different teams to determine teams with highest performance.
 
 **Query 8** 
 - SELECT T.teamName, SUM(GT.isWinner) AS totalWins,
