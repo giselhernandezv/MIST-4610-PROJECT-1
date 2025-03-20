@@ -31,13 +31,13 @@ Ten Queries
 
 
 Query 1
-- This query retrieves all players names along with their team name by joining Player and Team tables through the Team_teamID foreign key. It allows for a quick way to access and view the players and which team they belong to. This is also useful for general lookup of a player but alspo finding their correspodning teams and their rosters.
+- This query retrieves all players names along with their team name by joining Player and Team tables through the Team_teamID foreign key. It allows for a quick way to access and view the players and which team they belong to. This is also useful for general lookup of a player but alspo finding their corresponding teams and their rosters. It is beneficial for basic reports that can display the player-team relationship
 
 Query 2
 - Though it may seem complex, this is actually a simple query because this is the joining of all of the tables together. By joining all of the tables that the database has created, we can retrieve all information related to the team, players, coaches, statistics, games, seasons, stadiums, sponsors, tickets, and broadcasts.
 
 Query 3
-- This query retrieves coaches and their perspective team through joining Coach and Team by the Tean_teamID foreign key. Thi query allows to provide a reference of their team. This also allows for team management and sports analysis for sports analysts who want to associate the coach to their team.
+- This query retrieves coaches and their perspective team through joining Coach and Team by the Tean_teamID foreign key. Thi query allows to provide a reference of their team. This also allows for team management and sports analysis for sports analysts who want to associate the coach to their team for reports.
 
 Query 4 
 - This query retrieves game ID, game date and stadiym name for the games in a specfic stadium. In this case, we used Sanford Stadium by using Inner Join between Game and Stadium Tables. This ensures that only games hosted at the specific stadium are recorded. The WHERE clause was necessary to provide the games that took place in the specific stadium (Sanford Stadium). This is crcuial for analysts, managers, and fans to view where and when a specific game is to be held at the specific stadium.
@@ -58,5 +58,5 @@ Query 9
 - This query allows for the average ticket per price of the game and ensures the count of all tickets sold per game. This also filters that the average ticket prices are above $120 and sorting the average prices from lowest to highest prices are shown. By not excluding any of the stadiums, it allows for a broader view of ticket pricing trends of stadiums with a average price greater than 120. This also helps to see which stadium has a cheaper average ticket to help with pricings. 
 
 Query 10
-- This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are considered. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
+- This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are guaranteed to be taken into account. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
 
