@@ -32,7 +32,7 @@ Ten Queries
 - 
 
 
-Query 1
+**Query 1**
 - SELECT Player.firstNamePlayer, Player.lastNamePlayer, Team.teamName
 FROM Player
 JOIN Team ON Player.Team_teamID = Team.teamID;
@@ -40,7 +40,7 @@ JOIN Team ON Player.Team_teamID = Team.teamID;
 
 - This query retrieves all players names along with their team name by joining Player and Team tables through the Team_teamID foreign key. It allows for a quick way to access and view the players and which team they belong to. This is also useful for general lookup of a player but alspo finding their corresponding teams and their rosters. It is beneficial for basic reports that can display the player-team relationship.
 
-Query 2
+**Query 2**
 - SELECT g.gameID, g.gameDate, t.teamName
 FROM Game g
 JOIN GameTeam gt ON g.gameID = gt.gameID
@@ -50,7 +50,7 @@ WHERE t.teamName = 'Alabama Crimson Tide';
 
 - This SQL query retrieves all games played by the Alabama Crimson Tide, displaying the game ID, game date, and team name. This query also joins several tables which are Game, GameTeam, and Team. It allows for analysts and reporters to see past and upcoming games for the specific team and allows for fans to look up a specific team and the game date since many fans look to only support a specific team.
 
-Query 3
+**Query 3**
 - SELECT Coach.firstNameCoach, Coach.lastNameCoach, Team.teamName
 FROM Coach
 JOIN Team ON Coach.Team_teamID = Team.teamID;
@@ -58,7 +58,7 @@ JOIN Team ON Coach.Team_teamID = Team.teamID;
 
 - This query retrieves coaches and their perspective team through joining Coach and Team by the Tean_teamID foreign key. Thi query allows to provide a reference of their team. This also allows for team management and sports analysis for sports analysts who want to associate the coach to their team for reports.
 
-Query 4 
+**Query 4** 
 - SELECT g.gameID, g.gameDate, s.stadiumName
 FROM Game g
 JOIN Stadium s ON g.Stadium_stadiumID = s.stadiumID
@@ -67,7 +67,7 @@ WHERE s.stadiumName = 'West Johnville Stadium';
 
 - This query retrieves game ID, game date and stadium name for the games in a specfic stadium. In this case, we used West Johnville Stadium by using Join between Game and Stadium Tables. This ensures that only games hosted at the specific stadium are recorded. The WHERE clause was necessary to provide the games that took place in the specific stadium (West Johnville Stadium). This is crcuial for analysts, managers, and fans to view where and when a specific game is to be held at the specific stadium.
 
-Query 5 
+**Query 5** 
 - SELECT t.teamID, t.teamName, sp.sponsorName, s.sponsorshipAmount
 FROM Sponsorship s
 JOIN Team t ON s.Team_teamID = t.teamID
@@ -78,7 +78,7 @@ ORDER BY s.sponsorshipAmount DESC;
 
 - This shows the teams with above-average sponsorship deals and the name of their sponsor, orders the list from highest to lowest. It joins the Team, Sponsorship, and Sponsor tables to display team name, sponsor name, and sponsorship amount. The subquery calculates the average sponsorship amount across all teams. It is the most helpful for identifying teams with large funding and their key sponsors, helping analysts understand which sponsors contribute the most, and supporting teams in negotiating sponsorship deals.
 
-Query 6
+**Query 6**
 - SELECT P.firstNamePlayer, P.lastNamePlayer, S.year, ST.passingYards
 FROM Statistics ST
 JOIN Player P ON ST.Player_playerID = P.playerID
@@ -89,7 +89,7 @@ ORDER BY ST.passingYards DESC;
 
 - Lines of players’ first and last names are returned with this query as well as the season and their passing yards, which is sorted from highest passing yards to lowest.  This query also specifically grabs players with more than 4700 passing yards. This is a multi join through three different tables which are Statistics, Player and Season. By specifically seeing those who have a high number of passing yards, coaches can identify top-performing players. This is also crucial for player recognition, strategy planning, and potential scouting. 
 
-Query 7
+**Query 7**
 - SELECT G.gameDate, S.stadiumName, MAX(T.price) AS highestTicketPrice
 FROM Ticket T
 JOIN Game G ON T.Game_gameID = G.gameID
@@ -100,7 +100,7 @@ ORDER BY highestTicketPrice DESC;
 
 - This query retrieves the most expensive ticket price of each game along with the date of the game and the stadium at which the game occurred. It sorts the ticket pricing from the highest to lowest using the descending order. This is beneficial for financial and revenue analysis and being able to see what specific game date and stadium brought the highest selling tickets. It allows managers to view what locations drive the most popularity to assist in future pricing strategies.
 
-Query 8 
+**Query 8** 
 - SELECT T.teamName, SUM(GT.isWinner) AS totalWins,
 COUNT(GT.gameID) AS totalGamesPlayed,ROUND((SUM(GT.isWinner) / COUNT(GT.gameID)) * 100, 2) AS winPercentage
 FROM GameTeam GT
@@ -111,7 +111,7 @@ ORDER BY totalWins DESC, winPercentage DESC;
 
 - This retrieves the teams, the wins the team has, and calculates the win percentage of the team. The query also sorts the table in descending order by total wins and win percentage. This is highly critical to coaches, managers, and analysts in tracking performance of entire teams. This also permits analysts to observe in which position every team can be placed in terms of their wins and win rate. This also gives a scope for teams with higher wins to form more sponsorship agreements, which will earn them more money. 
 
-Query 9
+**Query 9**
 - SELECT g.gameID, s.stadiumName, COUNT(t.ticketID) AS totalTicketsSold, 
        AVG(t.price) AS avgTicketPrice
 FROM Game g
@@ -125,8 +125,7 @@ ORDER BY avgTicketPrice ASC;
 
 - This query allows for the average ticket per price of the game and ensures the count of all tickets sold per game. This also filters that the average ticket prices are above $120 and sorting the average prices from lowest to highest prices are shown. By not excluding any of the stadiums, it allows for a broader view of ticket pricing trends of stadiums with a average price greater than 120. This also helps to see which stadium has a cheaper average ticket to help with pricings. 
 
-Query 10
-
+**Query 10**
 - This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are guaranteed to be taken into account. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
 
 Matrix
