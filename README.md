@@ -51,12 +51,22 @@ WHERE t.teamName = 'Alabama Crimson Tide';
 - This SQL query retrieves all games played by the Alabama Crimson Tide, displaying the game ID, game date, and team name. This query also joins several tables which are Game, GameTeam, and Team. It allows for analysts and reporters to see past and upcoming games for the specific team and allows for fans to look up a specific team and the game date since many fans look to only support a specific team.
 
 **Query 3**
-- SELECT Coach.firstNameCoach, Coach.lastNameCoach, Team.teamName
-FROM Coach
-JOIN Team ON Coach.Team_teamID = Team.teamID;
-<img width="665" alt="Image" src="https://github.com/user-attachments/assets/7e209480-eb36-4b90-8ca0-b3f32af93837" />
+- SELECT t.teamName,
+    MAX(st.recevingYards) AS maxReceivingYards,
+    MAX(st.passingYards) AS maxPassingYards,
+    MAX(st.rushingYards) AS maxRushingYards
+FROM Team t
+JOIN Player p ON t.teamID = p.Team_teamID
+JOIN Statistics st ON p.playerID = st.Player_playerID
+JOIN Game g ON st.Game_gameID = g.gameID
+JOIN Stadium s ON g.Stadium_stadiumID = s.stadiumID
+WHERE p.positionPlayer = 'Quarterback' 
+GROUP BY t.teamName
+ORDER BY MAX(st.passingYards), MAX(st.recevingYards) , MAX(st.rushingYards);
+<img width="706" alt="Image" src="https://github.com/user-attachments/assets/fcd0a3a4-e98e-42fe-bc13-11e176fdc41a" />
 
-- This query retrieves coaches and their perspective team through joining Coach and Team by the Tean_teamID foreign key. Thi query allows to provide a reference of their team. This also allows for team management and sports analysis for sports analysts who want to associate the coach to their team for reports.
+- This query retrieves the maximum receiving, passing, and rushing yards that were achieved in each team. By viewing a very specific position which in this case was Quarterback, it allows managers, coaches, and analysts to see results from each team with the highest values of this particular position.  This is crucial for analyzing this particular role and where they are performing the highest. It also allows for comparison across the different teams to determine teams with highest performance.
+
 
 **Query 4** 
 - SELECT g.gameID, g.gameDate, s.stadiumName
@@ -126,7 +136,30 @@ ORDER BY avgTicketPrice ASC;
 - This query allows for the average ticket per price of the game and ensures the count of all tickets sold per game. This also filters that the average ticket prices are above $120 and sorting the average prices from lowest to highest prices are shown. By not excluding any of the stadiums, it allows for a broader view of ticket pricing trends of stadiums with a average price greater than 120. This also helps to see which stadium has a cheaper average ticket to help with pricings. 
 
 **Query 10**
-- This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are guaranteed to be taken into account. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
+- SELECT 
+    g.gameID, 
+    g.gameDate, 
+    s.stadiumName, 
+    t.price
+FROM Game g
+JOIN Stadium s ON g.Stadium_stadiumID = s.stadiumID
+JOIN Ticket t ON g.gameID = t.Game_gameID
+WHERE s.capacity > 50000  
+AND EXISTS (
+    SELECT 1
+    FROM Ticket tk2
+    WHERE tk2.Game_gameID = g.gameID
+    AND tk2.price >= (
+        SELECT AVG(tk3.price) 
+        FROM Ticket tk3 
+        WHERE tk3.Game_gameID = tk2.Game_gameID
+    )
+)
+ORDER BY t.price DESC;
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/60635bae-b1dc-41aa-8640-d7e92cc92712" />
+
+- This query is helpful for showing patterns in ticket pricing for large stadiums. By focusing on games in stadiums with a capacity larger than 50,000, it makes sure that at least one ticket for each game is priced at or above the game's average ticket price. This insight helps teams, event planners, and analysts evaluate premium pricing strategies, see demand for high-profile matches, and maximize revenue. By using exists the query shows games where premium-priced tickets are available and how ticket prices change across different events and venues.
+
 
 Matrix
 -
