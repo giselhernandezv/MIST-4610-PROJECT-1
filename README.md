@@ -21,6 +21,7 @@ Our team decided to model a database that administrates, schedules, handles oper
 Data Model
 -
 <img width="629" alt="Image" src="https://github.com/user-attachments/assets/ee77062e-b8b0-4168-84be-7f30ed866277" />
+
 Our team’s data model is based on different attributes for the NCAA. Each Team has many Players but one Player can only belong to one Team. A Team can also have multiple Coaches but each Coach only belongs to one Team.  A Team can have multiple Sponsorships but each Sponsorship is associated with only one Team. Sponsors can also have many Sponsorships with different Teams.There is a many-to-many relationship with Game and Team because a Team can play multiple games and a Game involves two teams(home and away). Each Game belongs to a certain season played in which a Season can have multiple Games. Each Game is also played in one Stadium but the Stadium can host multiple Games. Each Game is able to have multiple Statistics records for different Players but each Statistics record can only belong to each single Game. A similar concept applies for Players as a Player can have multiple Statistics records for different games but each Statistics record belongs to a single Player. Multiple Tickets are associated to one Game but each ticket belongs to a single Game. Multiple Broadcasts can be associated with one Game as well as a Broadcast can have multiple Games.
 
 Data Dictionary 
