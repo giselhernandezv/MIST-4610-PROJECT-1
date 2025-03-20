@@ -8,9 +8,9 @@ NCAA Football
 Group 5
 - Gisel Hernandez
 - Ansley Hankinson
-- Lukas Cornish (https://github.com/LukasCornish/MIST4610_Project1/blob/main/README%20(1).md)
+- [Lukas Cornish](https://github.com/LukasCornish/MIST4610_Project1/blob/main/README%20(1).md)
 - Malhar Sethia
-- Samuel White (https://github.com/Wykyyd/4610Project1)
+- [Samuel White](https://github.com/Wykyyd/4610Project1)
 
 Problem Description
 -
