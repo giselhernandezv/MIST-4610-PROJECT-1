@@ -55,4 +55,8 @@ Query 8
 - This query has an overview of each team and their sponsor name with the amount contributed. Through the joining of Team, Sponsorship, and Sponsor, it allows for teams and financial managers to view the funding sources and financial support of the different companies. By sorting in descending orders allows to highlight the team with the most financial support to the least.
 
 Query 9
-- This query calculates the average jersey number and only reterives those where the average jersery number is greater than 50. This allows to view the teams with a purely alphabetical names. This also alllows to view ther jersey number teams through analyzing the team and player have the higher jersey number
+- This query allows for the average ticket per price of the game and ensures the count of all tickets sold per game. This also filters that the average ticket prices are above $120 and sorting the average prices from lowest to highest prices are shown. By not excluding any of the stadiums, it allows for a broader view of ticket pricing trends of stadiums with a average price greater than 120. This also helps to see which stadium has a cheaper average ticket to help with pricings. 
+
+Query 10
+- This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are considered. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
+
