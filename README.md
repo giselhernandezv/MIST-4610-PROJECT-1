@@ -129,3 +129,6 @@ Query 10
 
 - This query returns the game date, home and away identifiers as well as their stadiums and prices. This query ensures that games with tickets sold (EXISTS) are guaranteed to be taken into account. This can prevent the listing of games with no tickets sold or have been canceled. This also shows that only stadiums with massive capacities of greater than 100,000 are shown. Tickets are also shown from lowest to highest ticket prices which determines affordable tickets for each game and attracts more fans.
 
+Matrix
+-
+
