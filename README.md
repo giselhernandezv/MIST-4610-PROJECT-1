@@ -6,7 +6,7 @@ NCAA Football
 **Team Members and Names**
 
 Group 5
-- Gisel Hernandez
+- Gisel Hernandez-Vazquez
 - [Ansley Hankinson](https://github.com/ansleyhankinson/4610project1/blob/main/README.md)
 - [Lukas Cornish](https://github.com/LukasCornish/MIST4610_Project1/blob/main/README%20(1).md)
 - Malhar Sethia
